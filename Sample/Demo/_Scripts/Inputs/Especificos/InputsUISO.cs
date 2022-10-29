@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 using ItIsNotOnlyMe.ManejoDeInputs;
 
 [CreateAssetMenu(fileName = "Input UI", menuName = "Inputs/Input UI")]
-public class InputsUISO : ScriptableObject, Inputs.IUIActions, ICambio
+public class InputsUISO : InputSO, Inputs.IUIActions
 {
-    [SerializeField] private ManejoDeInputsSO _manejoDeInputs;
+    [SerializeField] private InputManagerSO _manejoDeInputs;
 
     [SerializeField] private Evento EventoInventario;
 
@@ -13,8 +13,8 @@ public class InputsUISO : ScriptableObject, Inputs.IUIActions, ICambio
 
     private Inputs.UIActions _accionesDeUI => _manejoDeInputs.Inputs.UI;
 
-    public void Activar() => _accionesDeUI.Enable();
-    public void Desactivar() => _accionesDeUI.Disable();
+    public override void Activar() => _accionesDeUI.Enable();
+    public override void Desactivar() => _accionesDeUI.Disable();
 
     public void OnInventario(InputAction.CallbackContext context)
     {

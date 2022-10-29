@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 using ItIsNotOnlyMe.ManejoDeInputs;
 
 [CreateAssetMenu(fileName = "Input Personaje", menuName = "Inputs/Input Personaje")]
-public class InputsPersonajesSO : ScriptableObject, Inputs.IPersonajeActions, ICambio
+public class InputsPersonajesSO : InputSO, Inputs.IPersonajeActions
 {
-    [SerializeField] private ManejoDeInputsSO _manejoDeInputs;
+    [SerializeField] private InputManagerSO _manejoDeInputs;
 
     public bool Atacando { get { return _atacando; } }
     [SerializeField] private Evento EventoAtacarEmpezar;
@@ -18,7 +18,7 @@ public class InputsPersonajesSO : ScriptableObject, Inputs.IPersonajeActions, IC
 
 
     public Vector2 Direccion { get { return _direccion; } }
-    [SerializeField] private Evento<Vector2> EventoMover;
+    [SerializeField] private EventoGenerico<Vector2> EventoMover;
     
 
     private Inputs.PersonajeActions _accionesDelPersonaje => _manejoDeInputs.Inputs.Personaje;
@@ -27,8 +27,8 @@ public class InputsPersonajesSO : ScriptableObject, Inputs.IPersonajeActions, IC
     private bool _defendiendo = false;
     private Vector2 _direccion = Vector2.zero;
 
-    public void Activar() => _accionesDelPersonaje.Enable();
-    public void Desactivar() => _accionesDelPersonaje.Disable();
+    public override void Activar() => _accionesDelPersonaje.Enable();
+    public override void Desactivar() => _accionesDelPersonaje.Disable();
 
     public void OnAtacar(InputAction.CallbackContext context)
     {

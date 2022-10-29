@@ -3,12 +3,12 @@ using UnityEngine.InputSystem;
 using ItIsNotOnlyMe.ManejoDeInputs;
 
 [CreateAssetMenu(fileName = "Input Auto", menuName = "Inputs/Input Auto")]
-public class InputsAutoSO : ScriptableObject, Inputs.IAutoActions, ICambio
+public class InputsAutoSO : InputSO, Inputs.IAutoActions
 {
-    [SerializeField] private ManejoDeInputsSO _manejoDeInputs;
+    [SerializeField] private InputManagerSO _manejoDeInputs;
 
     public Vector2 Direccion { get { return _direccion; } }
-    [SerializeField] private Evento<Vector2> EventoMover;
+    [SerializeField] private EventoGenerico<Vector2> EventoMover;
 
     [SerializeField] private Evento EventoSalir;
 
@@ -22,8 +22,8 @@ public class InputsAutoSO : ScriptableObject, Inputs.IAutoActions, ICambio
     private bool _turbo = false;
 
 
-    public void Activar() => _accionesDelAuto.Enable();
-    public void Desactivar() => _accionesDelAuto.Disable();
+    public override void Activar() => _accionesDelAuto.Enable();
+    public override void Desactivar() => _accionesDelAuto.Disable();
 
     public void OnMovimiento(InputAction.CallbackContext context)
     {
