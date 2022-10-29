@@ -8,19 +8,20 @@ public class InputsAutoSO : InputSO, Inputs.IAutoActions
     [SerializeField] private InputManagerSO _manejoDeInputs;
 
     public Vector2 Direccion { get { return _direccion; } }
-    [SerializeField] private EventoGenerico<Vector2> EventoMover;
+    [SerializeField] private EventoGenerico<Vector2> _eventoMover;
 
-    [SerializeField] private Evento EventoSalir;
+    [SerializeField] private Evento _eventoSalir;
 
     public bool Turbo { get { return _turbo; } }
-    [SerializeField] private Evento EventoTurboEmpezar;
-    [SerializeField] private Evento EventoTurboTerminar;
+    [SerializeField] private Evento _eventoTurboEmpezar;
+    [SerializeField] private Evento _eventoTurboTerminar;
 
     private Inputs.AutoActions _accionesDelAuto => _manejoDeInputs.Inputs.Auto;
 
     private Vector2 _direccion;
     private bool _turbo = false;
 
+    private void OnEnable() => _accionesDelAuto.SetCallbacks(this);
 
     public override void Activar() => _accionesDelAuto.Enable();
     public override void Desactivar() => _accionesDelAuto.Disable();
@@ -28,26 +29,27 @@ public class InputsAutoSO : InputSO, Inputs.IAutoActions
     public void OnMovimiento(InputAction.CallbackContext context)
     {
         Vector2 direccion = context.ReadValue<Vector2>();
-        EventoMover?.Invoke(direccion);
+        _eventoMover?.Invoke(direccion);
         Moviendose(direccion);
     }
 
     public void OnSalir(InputAction.CallbackContext context)
     {
-        EventoSalir?.Invoke();
+        if (context.phase == InputActionPhase.Started)
+            _eventoSalir?.Invoke();
     }
 
     public void OnTurbo(InputAction.CallbackContext context)
     {
         if (context.phase == InputActionPhase.Started)
         {
-            EventoTurboEmpezar?.Invoke();
+            _eventoTurboEmpezar?.Invoke();
             EmpezandoTurbo();
         }
 
         if (context.phase == InputActionPhase.Canceled)
         {
-            EventoTurboTerminar?.Invoke();
+            _eventoTurboTerminar?.Invoke();
             TerminandoTurbo();
         }
     }

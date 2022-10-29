@@ -8,17 +8,19 @@ public class InputsPersonajesSO : InputSO, Inputs.IPersonajeActions
     [SerializeField] private InputManagerSO _manejoDeInputs;
 
     public bool Atacando { get { return _atacando; } }
-    [SerializeField] private Evento EventoAtacarEmpezar;
-    [SerializeField] private Evento EventoAtacarTerminar;
+    [SerializeField] private Evento _eventoAtacarEmpezar;
+    [SerializeField] private Evento _eventoAtacarTerminar;
 
 
     public bool Defendiendo { get { return _defendiendo; } }
-    [SerializeField] private Evento EventoDefenderEmpezar;
-    [SerializeField] private Evento EventoDefenderTerminar;
+    [SerializeField] private Evento _eventoDefenderEmpezar;
+    [SerializeField] private Evento _eventoDefenderTerminar;
 
 
     public Vector2 Direccion { get { return _direccion; } }
-    [SerializeField] private EventoGenerico<Vector2> EventoMover;
+    [SerializeField] private EventoGenerico<Vector2> _eventoMover;
+
+    [SerializeField] private Evento _eventoInteractuar;
     
 
     private Inputs.PersonajeActions _accionesDelPersonaje => _manejoDeInputs.Inputs.Personaje;
@@ -27,6 +29,8 @@ public class InputsPersonajesSO : InputSO, Inputs.IPersonajeActions
     private bool _defendiendo = false;
     private Vector2 _direccion = Vector2.zero;
 
+    private void OnEnable() => _accionesDelPersonaje.SetCallbacks(this);
+
     public override void Activar() => _accionesDelPersonaje.Enable();
     public override void Desactivar() => _accionesDelPersonaje.Disable();
 
@@ -34,13 +38,13 @@ public class InputsPersonajesSO : InputSO, Inputs.IPersonajeActions
     {
         if (context.phase == InputActionPhase.Started)
         {
-            EventoAtacarEmpezar?.Invoke();
+            _eventoAtacarEmpezar?.Invoke();
             EmpiezaAAtacar();
         }
 
         if (context.phase == InputActionPhase.Canceled)
         {
-            EventoAtacarTerminar?.Invoke();
+            _eventoAtacarTerminar?.Invoke();
             TerminaDeAtacar();
         }
     }
@@ -49,13 +53,13 @@ public class InputsPersonajesSO : InputSO, Inputs.IPersonajeActions
     {
         if (context.phase == InputActionPhase.Started)
         {
-            EventoDefenderEmpezar?.Invoke();
+            _eventoDefenderEmpezar?.Invoke();
             EmpiezaADefender();
         }
 
         if (context.phase == InputActionPhase.Canceled)
         {
-            EventoDefenderTerminar?.Invoke();
+            _eventoDefenderTerminar?.Invoke();
             TerminaDeDefender();
         }
     }
@@ -63,8 +67,14 @@ public class InputsPersonajesSO : InputSO, Inputs.IPersonajeActions
     public void OnMovimiento(InputAction.CallbackContext context)
     {
         Vector2 direccion = context.ReadValue<Vector2>();
-        EventoMover?.Invoke(direccion);
+        _eventoMover?.Invoke(direccion);
         Moviendose(direccion);
+    }
+
+    public void OnInteractuar(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+            _eventoInteractuar?.Invoke();
     }
 
     private void EmpiezaAAtacar() => _atacando = true;

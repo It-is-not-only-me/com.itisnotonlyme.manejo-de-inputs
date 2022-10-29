@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Input UI
   m_EditorClassIdentifier: 
   _manejoDeInputs: {fileID: 11400000, guid: 621ee5701abc04c419511d7a40c05bce, type: 2}
-  EventoInventario: {fileID: 0}
-  EventoMenu: {fileID: 0}
+  EventoInventario: {fileID: 11400000, guid: 0e55003ed6801e143bc5384ac4e5a5ee, type: 2}
+  EventoMenu: {fileID: 11400000, guid: 2a404d57616a2014891722c8d03ab56f, type: 2}
