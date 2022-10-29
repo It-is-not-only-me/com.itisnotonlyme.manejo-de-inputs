@@ -2,7 +2,8 @@
     "name": "Demo-manejo-de-inputs",
     "rootNamespace": "",
     "references": [
-        "GUID:4ce30cebadcd18d4ab587183232c3720"
+        "GUID:4ce30cebadcd18d4ab587183232c3720",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
