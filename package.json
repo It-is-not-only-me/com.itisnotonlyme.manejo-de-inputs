@@ -1,6 +1,6 @@
 {
   "name": "com.itisnotonlyme.manejo-de-inputs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "displayName": "Manejo de inputs",
   "description": "Un sistema intuitivo de manejar los inputs en un juego, utilizando el nuevo sistema de inputs de unity",
   "unity": "2020.3",
