@@ -18,7 +18,7 @@ public class InputsPersonajesSO : InputSO, Inputs.IPersonajeActions
 
 
     public Vector2 Direccion { get { return _direccion; } }
-    [SerializeField] private EventoGenerico<Vector2> _eventoMover;
+    [SerializeField] private EventoVector2 _eventoMover;
 
     [SerializeField] private Evento _eventoInteractuar;
     

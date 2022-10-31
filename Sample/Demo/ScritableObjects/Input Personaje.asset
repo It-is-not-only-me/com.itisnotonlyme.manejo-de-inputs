@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Input Personaje
   m_EditorClassIdentifier: 
   _manejoDeInputs: {fileID: 11400000, guid: 621ee5701abc04c419511d7a40c05bce, type: 2}
-  EventoAtacarEmpezar: {fileID: 0}
-  EventoAtacarTerminar: {fileID: 0}
-  EventoDefenderEmpezar: {fileID: 0}
-  EventoDefenderTerminar: {fileID: 0}
-  EventoMover: {fileID: 0}
+  _eventoAtacarEmpezar: {fileID: 0}
+  _eventoAtacarTerminar: {fileID: 0}
+  _eventoDefenderEmpezar: {fileID: 0}
+  _eventoDefenderTerminar: {fileID: 0}
+  _eventoMover: {fileID: 11400000, guid: e172c9af7021fb84ca54b7bf90161705, type: 2}
+  _eventoInteractuar: {fileID: 11400000, guid: cd79345b9b73fca478f260844ee8d817, type: 2}

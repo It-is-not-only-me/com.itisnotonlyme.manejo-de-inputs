@@ -12,6 +12,6 @@ namespace ItIsNotOnlyMe.ManejoDeInputs
 
         public int Id() => GetInstanceID();
 
-        public void Invoke(bool activar) => EventoActual?.Invoke(Id(), activar);
+        public void SetearActivacion(bool activar) => EventoActual?.Invoke(Id(), activar);
     }
 }

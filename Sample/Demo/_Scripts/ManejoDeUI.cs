@@ -19,7 +19,7 @@ public class ManejoDeUI : MonoBehaviour
 
     private void Awake()
     {
-        _activarUI?.Invoke(true);
+        _activarUI?.SetearActivacion(true);
 
         if (_eventoMenu != null)
             _eventoMenu.EventoActual += ActivarMenu;

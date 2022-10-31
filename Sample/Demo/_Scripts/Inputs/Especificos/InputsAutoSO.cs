@@ -8,7 +8,7 @@ public class InputsAutoSO : InputSO, Inputs.IAutoActions
     [SerializeField] private InputManagerSO _manejoDeInputs;
 
     public Vector2 Direccion { get { return _direccion; } }
-    [SerializeField] private EventoGenerico<Vector2> _eventoMover;
+    [SerializeField] private EventoVector2 _eventoMover;
 
     [SerializeField] private Evento _eventoSalir;
 

@@ -68,7 +68,7 @@
                 {
                     "name": "down",
                     "id": "0e14464a-314c-4131-8c37-3451834937af",
-                    "path": "<VirtualMouse>/scroll/down",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Input Auto
   m_EditorClassIdentifier: 
   _manejoDeInputs: {fileID: 11400000, guid: 621ee5701abc04c419511d7a40c05bce, type: 2}
-  EventoMover: {fileID: 0}
-  EventoSalir: {fileID: 0}
-  EventoTurboEmpezar: {fileID: 0}
-  EventoTurboTerminar: {fileID: 0}
+  _eventoMover: {fileID: 11400000, guid: aef02cc88b4613145bb61eed1d2e0e82, type: 2}
+  _eventoSalir: {fileID: 11400000, guid: 5f30cbd697ae50c4aa56b3d15ff7a812, type: 2}
+  _eventoTurboEmpezar: {fileID: 0}
+  _eventoTurboTerminar: {fileID: 0}
